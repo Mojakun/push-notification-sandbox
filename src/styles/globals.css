@@ -112,6 +112,9 @@ a {
   border-radius: 5px;
   padding: 10px;
   display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
 }
 
 .display {
@@ -121,12 +124,16 @@ a {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .button-row {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .number-button {
