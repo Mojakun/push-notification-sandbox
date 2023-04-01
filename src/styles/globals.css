@@ -115,6 +115,7 @@ a {
   width: 100%;
   max-width: 400px;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .display {
@@ -126,6 +127,7 @@ a {
   border-radius: 5px;
   width: 100%;
   box-sizing: border-box;
+  height: 60px;
 }
 
 .button-row {
@@ -142,9 +144,10 @@ a {
   border-radius: 5px;
   color: #333;
   font-size: 18px;
-  padding: 10px;
+  padding: 20px;
   width: 25%;
   margin-right: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
 }
 
@@ -154,9 +157,10 @@ a {
   border-radius: 5px;
   color: #333;
   font-size: 18px;
-  padding: 10px;
+  padding: 20px;
   width: 25%;
   margin-right: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
 }
 
@@ -166,9 +170,10 @@ a {
   border-radius: 5px;
   color: #333;
   font-size: 18px;
-  padding: 10px;
+  padding: 20px;
   width: 50%;
   margin-right: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
 }
 
@@ -178,7 +183,13 @@ a {
   border-radius: 5px;
   color: #333;
   font-size: 18px;
-  padding: 10px;
+  padding: 20px;
   width: 25%;
+  margin-bottom: 5px;
   cursor: pointer;
+}
+
+.number-button:active,
+.operator-button:active {
+  background-color: #d9d9d9;
 }
