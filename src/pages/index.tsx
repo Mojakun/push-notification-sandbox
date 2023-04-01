@@ -31,7 +31,7 @@ export default function Home() {
     const init = async () => {
       try {
         await OneSignalReact.init({
-          appId: "46ce0cce-8b77-4ad8-80cb-44b570cbcf91",
+          appId: "d5ed5df8-7d24-4f5e-82b7-d1007afae10f",
           allowLocalhostAsSecureOrigin: true,
         });
         await OneSignalReact.showSlidedownPrompt();
