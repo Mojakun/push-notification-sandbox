@@ -1,11 +1,63 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import { useState } from "react";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [result, setResult] = useState<string>("0");
+  const [firstNum, setFirstNum] = useState<string>("");
+  const [operator, setOperator] = useState<string>("");
+
+  const handleNumClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const num: string = e.currentTarget.value;
+    if (result === "0") {
+      setResult(num);
+    } else {
+      setResult(result + num);
+    }
+  };
+
+  const handleOperatorClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const op: string = e.currentTarget.value;
+    setFirstNum(result);
+    setResult("0");
+    setOperator(op);
+  };
+
+  const handleClearClick = () => {
+    setResult("0");
+    setFirstNum("");
+    setOperator("");
+  };
+
+  const handleEqualClick = () => {
+    const secondNum: string = result;
+    let res: string = "";
+    switch (operator) {
+      case "+":
+        res = (Number(firstNum) + Number(secondNum)).toString();
+        break;
+      case "-":
+        res = (Number(firstNum) - Number(secondNum)).toString();
+        break;
+      case "*":
+        res = (Number(firstNum) * Number(secondNum)).toString();
+        break;
+      case "/":
+        res = (Number(firstNum) / Number(secondNum)).toString();
+        break;
+      default:
+        res = "0";
+        break;
+    }
+    setResult(res);
+    setFirstNum("");
+    setOperator("");
+  };
+
   return (
     <>
       <Head>
@@ -15,109 +67,122 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+        <div className="calculator">
+          <div className="display">{result}</div>
+          <div className="button-row">
+            <button
+              className="number-button"
+              onClick={handleNumClick}
+              value="1"
             >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+              1
+            </button>
+            <button
+              className="number-button"
+              onClick={handleNumClick}
+              value="2"
+            >
+              2
+            </button>
+            <button
+              className="number-button"
+              onClick={handleNumClick}
+              value="3"
+            >
+              3
+            </button>
+            <button
+              className="operator-button"
+              onClick={handleOperatorClick}
+              value="+"
+            >
+              +
+            </button>
           </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
+          <div className="button-row">
+            <button
+              className="number-button"
+              onClick={handleNumClick}
+              value="4"
+            >
+              4
+            </button>
+            <button
+              className="number-button"
+              onClick={handleNumClick}
+              value="5"
+            >
+              5
+            </button>
+            <button
+              className="number-button"
+              onClick={handleNumClick}
+              value="6"
+            >
+              6
+            </button>
+            <button
+              className="operator-button"
+              onClick={handleOperatorClick}
+              value="-"
+            >
+              -
+            </button>
           </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+          <div className="button-row">
+            <button
+              className="number-button"
+              onClick={handleNumClick}
+              value="7"
+            >
+              7
+            </button>
+            <button
+              className="number-button"
+              onClick={handleNumClick}
+              value="8"
+            >
+              8
+            </button>
+            <button
+              className="number-button"
+              onClick={handleNumClick}
+              value="9"
+            >
+              9
+            </button>
+            <button
+              className="operator-button"
+              onClick={handleOperatorClick}
+              value="*"
+            >
+              *
+            </button>
+          </div>
+          <div className="button-row">
+            <button className="clear-button" onClick={handleClearClick}>
+              Clear
+            </button>
+            <button
+              className="number-button"
+              onClick={handleNumClick}
+              value="0"
+            >
+              0
+            </button>
+            <button className="equal-button" onClick={handleEqualClick}>
+              =
+            </button>
+            <button
+              className="operator-button"
+              onClick={handleOperatorClick}
+              value="/"
+            >
+              /
+            </button>
+          </div>
         </div>
       </main>
     </>
-  )
+  );
 }

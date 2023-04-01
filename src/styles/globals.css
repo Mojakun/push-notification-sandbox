@@ -1,9 +1,9 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -104,4 +104,74 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.calculator {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: inline-block;
+}
+
+.display {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: right;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.number-button {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 25%;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.operator-button {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 25%;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.clear-button {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 50%;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.equal-button {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 25%;
+  cursor: pointer;
 }
