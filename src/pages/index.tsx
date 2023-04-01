@@ -5,11 +5,13 @@ import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { SWRConfig } from "swr";
 import Calculator from "@/components/calculator";
+import OneSignalReact from "react-onesignal";
 
-const inter = Inter({ subsets: ["latin"] });
+import Script from "next/script"; // 1. import next/script
 
 export default function Home() {
   useEffect(() => {
+    console.error("hakka");
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
         navigator.serviceWorker.register("/service-worker.js").then(
@@ -25,6 +27,21 @@ export default function Home() {
         );
       });
     }
+
+    const init = async () => {
+      try {
+        await OneSignalReact.init({
+          appId: "46ce0cce-8b77-4ad8-80cb-44b570cbcf91",
+          allowLocalhostAsSecureOrigin: true,
+        });
+        await OneSignalReact.showSlidedownPrompt();
+      } catch (error) {
+        console.log("--------------");
+        console.error(error);
+      }
+    };
+
+    init();
   }, []);
 
   return (
@@ -35,6 +52,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Script
+        src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+        async
+        strategy="lazyOnload"
+      ></Script>
       <SWRConfig value={{ dedupingInterval: 60000 }}>
         <Calculator />
       </SWRConfig>
